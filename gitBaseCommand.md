@@ -45,7 +45,7 @@ git commit -m "message"
 ```
 必须要在commit命令后面增加一个参数，并且输入提示消息。
 以避免出现不必要的麻烦。
-### 版本回退
+### 查看status
 现在我们已将gitBaseCommand.md 文件添加并且提交到git中去了。可以，开始继续工作，修改文件了。
 
 现在修改文件。修改完成后，输入git status
@@ -53,3 +53,45 @@ git commit -m "message"
 git status
 ```
 git status命令，可以查看当前git的状态。
+![status](assets/markdown-img-paste-20171002213733855.png)
+显示，在master分支上，文件被修改，但是却没有add和commit。
+```
+git add gitBaseCommand.md
+```
+等一下才commit文件
+现在我们先查看一下文件状态
+```
+git status
+```
+
+![addstatus](assets/markdown-img-paste-20171002214808421.png)
+显示信息提示我们。文件已经被添加到git。可以commit。
+```
+git commit -m "meassage"
+```
+提交完成。既然我们学习了git  status命令。
+那么我们来查看一下commit后的git status
+```
+git status
+```
+![commit](assets/markdown-img-paste-20171002215349216.png)
+信息显示，现在没有文件要commit。
+### 版本倒退
+我们现在已经提交过两次了。如果我们想回到上一次提交的时候应该怎么做呢？
+或许我们应该查看一下，之前我们提交的信息。 以免回到错误的版本。
+```
+git log
+```
+![log](assets/markdown-img-paste-20171002220147407.png)
+
+git log命令可以查看最近到最远的log。即我们提交的日志。
+如果觉得显示的信息太复杂，添加 --pretty=oneline 参数。
+```
+git log --pretty=oneline
+```
+![oneline](assets/markdown-img-paste-20171002220358555.png)
+从显示的信息可以，看出，我们一共提交了两次。那些数字，是commit的id。用这个id我们可以回到我们想要去的版本。
+```
+git reset --hard b33a95
+```
+ID可以不用写完，git会自动去查找的。
