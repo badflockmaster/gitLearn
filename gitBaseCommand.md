@@ -95,3 +95,11 @@ git log --pretty=oneline
 git reset --hard b33a95
 ```
 ID可以不用写完，git会自动去查找的。
+可以去看一下文件，是否回到了我们提交的状态。
+如果commit 的 id。我们应该怎么办才能在各个版本之剪跳转呢？
+这时，我们可以使用git reflog命令。
+```
+git reflog
+```
+这会显示我们输入的每一条命令。在命令前就有commit的id。
+这样我们就可以在每一个版本之间进行跳转。
