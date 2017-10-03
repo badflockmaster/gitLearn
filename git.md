@@ -105,3 +105,66 @@ git reflog
 这样我们就可以在每一个版本之间进行跳转。
 ### 撤销修改
 假如我们修改了文件，但是却没有add，此时我们想要回到最近的一个版本，应该怎么做。
+![checkout](assets/markdown-img-paste-20171003101415902.png)
+```
+git checkout -- git.md
+```
+ps：注意在checkout和文件名中间的 -- ，要与两边都有空格。
+****
+假如我们修改了文件，并且已经add。但是现在我们想要取消add操作。
+```
+git reset HEAD git.md
+```
+这样便取消了之前的add操作。但是文件的修改还在。相对于回到了第一种情况。
+****
+
+
+### 删除文件
+如果我们删除了一个文件，此时我们运行git status命令查看，git的状态。
+```
+git status
+```
+![delete](assets/markdown-img-paste-20171003102540590.png)
+如果是误删的文件，我们也可以选择回到删除之前最新的一个版本。
+```
+git checkout -- gitBaseCommand.md
+```
+git checkout 不仅可以回到修改之前的版本，也可以恢复误删的文件。
+如果想要完全删除此文件，就要把git中的文件也要删除。
+```
+git rm gitBaseCommand.md
+git status
+```
+![rm](assets/markdown-img-paste-20171003102953422.png)
+现在文件已经删除了，显示文字已经变成了绿色。
+但是现在还没有commit。
+```
+git commit -m "rm gitBaseCommand.md"
+git status
+```
+![rmcommit](assets/markdown-img-paste-20171003103153399.png)
+
+现在便完成了删除操作。
+
+## 远程版本库（remote）
+
+```
+git remote add origin https://github.com/badflockmaster/gitLearn.git
+```
+这样便将本地的git与远程的github练习起来。
+我们现在是现在本地创建的git，所以现在我们需要将本地的git推送到github上去。
+```
+git push -u origin master
+```
+现在再去看一下github上的repository，发现已经更新到和本地的git一样。
+PS：第一次push 需要增加一个-u 的参数，但是这样以后的push，就可以不需要这个参数了。
+```
+git push origin master
+```
+现在，便完成了push操作。
+***
+如果是先创建了远程git，而且已经有内容在github中了。现在需要在本地建立起联系。并且将内容clone到本地。
+```
+git clone https://github.com/badflockmaster/gitLearn.git
+```
+现在，git学习告一段落。
